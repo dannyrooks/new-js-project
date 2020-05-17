@@ -11,4 +11,10 @@ class GuitarsController < ApplicationController
     guitar = Guitar.find_by(params[:id])
     render json: GuitarSerializer.new(guitar)
   end
+
+  def create
+    newGuitar = Guitar.create(name: params['name'], category: params['category'])
+    render json: GuitarSerializer.new(newGuitar)
+  end
+
 end

@@ -26,7 +26,7 @@ function handleFormSubmit(event) {
         let inputs = formDiv.querySelectorAll('input')
         let select = formDiv.querySelectorAll('select')
         let newGuitarObj = {
-            name: inputs[0.value,
+            name: inputs[0].value,
             category: inputs[1].value,
             brand_id: select.value
         }
@@ -54,5 +54,20 @@ function renderAllGuitarsBrands() {
 }
 
 function renderAllGuitarsBrands() {
-
+    formDiv.innerHTML = `
+    Guitar Name:
+    <input type="text" />
+    <br>
+    Guitar Category:
+    <input type="text" />
+    <br>
+    <select>
+       <option value="default" selected="selected">Select one option </option>
+     ${Brand.all.map(brand => {
+       return `<option value=${brand.id}>${brand.name}</option>`
+     }).join("")}
+    </select>
+    <button>Add New Guitar</button>
+  `
+  main.appendChild(formDiv)
 }

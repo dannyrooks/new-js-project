@@ -1,10 +1,7 @@
 class GuitarsController < ApplicationController
   def index
     guitars = Guitar.all
-    options = {}
-    options[:include] = [:brand]
-    # render json: guitars, include: :brand
-    render json: GuitarSerializer.new(guitars, options)
+    render json: GuitarSerializer.new(guitars)
   end
 
   def show
@@ -19,7 +16,6 @@ class GuitarsController < ApplicationController
 
   def destroy
     guitar = Guitar.find_by(id: params[:id])
-    # byebug
   end
 
 end

@@ -1,5 +1,5 @@
 class GuitarSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :category, :year, :brand_id
+  attributes :name, :category, :year
   belongs_to :brand
 end

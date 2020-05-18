@@ -2,12 +2,12 @@ class Guitar {
 
     static all = []
 
-    constructor({id, brand_id, name, category, year}) {
+    constructor({id, name, category, year, brand_id}) {
         this.id = id
-        this.brand_id = brand_id
         this.name = name
         this.category = category
         this.year = year
+        this.brand_id = brand_id
 
         this.element = document.createElement('div')
         this.element.className = "guitar"

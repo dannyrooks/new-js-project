@@ -2,10 +2,10 @@
 const baseURL = 'http://localhost:3000'
 
 
-const guitarAdapter = new GuitarsAdapter("http://localhost:3000/guitars")
+const guitarsAdapter = new GuitarsAdapter("http://localhost:3000/guitars")
 const brandsAdapter = new BrandsAdapter("http://localhost:3000/brands")
 
-guitarAdapter.fetchGuitars()
+guitarsAdapter.fetchGuitars()
 brandsAdapter.fetchBrands()
 
 
@@ -16,21 +16,31 @@ menu.addEventListener('click', handleMenuClick)
 
 function handleMenuClick(event) {
     if (event.target.id !== menu) {
+        main.innerHTML = ``
         callbacks[`${event.target.id}`]()
     } 
 }
 
 const callbacks = {
     allGuitars: renderAllGuitars,
-    //allBrands: renderAllBrands,
-    //guitarsBrands: renderAllGuitarsBrands,
-    //newGuitars: renderNewGuitarForm,
-    //newBrand: renderNewBrandForm
+    guitarsBrands: renderAllGuitarsBrands,
+    // newGuitars: renderNewGuitarForm,
+    // newBrand: renderNewBrandForm
 }
 
 function renderAllGuitars() {
     Guitar.all.forEach(guitar => {
-        main.appendChild(guitar.fullRender())
+        main.appendChild(guitar.fullRender)
     })
-    //render guitars and their attributes with corresponding brands
+    //render all guitars with name, brand, category, year
+}
+
+function renderAllGuitarsBrands() {
+    Brand.all.forEach(guitar => {
+        main.appendChild(guitar.element)
+    })
+}
+
+function renderAllGuitarsBrands() {
+
 }

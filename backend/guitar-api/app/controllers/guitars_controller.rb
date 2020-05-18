@@ -13,8 +13,13 @@ class GuitarsController < ApplicationController
   end
 
   def create
-    newGuitar = Guitar.create(name: params['name'], category: params['category'])
+    newGuitar = Guitar.create(name: params['name'], category: params['category'], year: params['year'])
     render json: GuitarSerializer.new(newGuitar)
+  end
+
+  def destroy
+    guitar = Guitar.find_by(id: params[:id])
+    # byebug
   end
 
 end

@@ -32,7 +32,11 @@ function handleSubmitGuitar(){
 
     fetch("http://localhost:3000/guitars", configObj)
         .then(resToJson)
-        .then(console.log)
+        .then(function(resObj){
+            let guitarObj = resObj.data
+            putGuitarOnDom(guitarObj)
+        }
+        )
 }
 
 function fetchGuitars() {
@@ -49,14 +53,44 @@ function resToJson(res){
 
 function putGuitarOnDom(guitar){
     guitarList.innerHTML += 
-        `<li>${guitar.attributes.name}: ${guitar.attributes.category}: ${guitar.attributes.year}</li>`
+        `<li id="guitar-${guitar.id}">${guitar.attributes.name}: 
+        ${guitar.attributes.category}: ${guitar.attributes.year}</li>
+        <button class="delete" id=${guitar.id}>Delete</button>`
+        
     
 }
 
+// Delete button no-worky!
+guitarList.addEventListener('click', handleDelete)
 
+function handleDelete(e){
+    if (e.target.className = 'delete'){
+        let id = e.target.id 
+        
+        let configObj = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accepts": "application/json"
+            }
+        }
 
+        fetch(`http://localhost:3000/guitars/${id}`, configObj)
+        guitarList.innerHTML = ""
+        fetchGuitars()
+    }
+}
+// function removeGuitar(id) {
+//     fetch(BASE_URL+`/recipes/${id}`, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type':'application/json',
+//             'Accept':'application/json'
+//         }
+//     })
+//     .then(fetchGuitars)
+// }
 
 
 
 fetchGuitars()
-

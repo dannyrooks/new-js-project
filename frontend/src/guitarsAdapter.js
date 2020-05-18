@@ -13,7 +13,7 @@ class GuitarsAdapter {
                 guitarObj.id, brand_id: 
                 guitarObj.relationships.brand.data}
                 //guitarObj.relationships.brand.data.id}
-                console.log(sanitized);
+                // console.log(sanitized);
                 new Guitar(sanitized)
             })
         })

@@ -21,10 +21,23 @@ function handleMenuClick(event) {
     } 
 }
 
+function handleFormSubmit(event) {
+    if(event.target.tagName == "BUTTON") {
+        let inputs = formDiv.querySelectorAll('input')
+        let select = formDiv.querySelectorAll('select')
+        let newGuitarObj = {
+            name: inputs[0.value,
+            category: inputs[1].value,
+            brand_id: select.value
+        }
+        guitarsAdapter.newGuitar(newGuitarObj)
+    }
+}
+
 const callbacks = {
     allGuitars: renderAllGuitars,
     guitarsBrands: renderAllGuitarsBrands,
-    // newGuitars: renderNewGuitarForm,
+    newGuitars: renderNewGuitarForm,
     // newBrand: renderNewBrandForm
 }
 
@@ -32,12 +45,11 @@ function renderAllGuitars() {
     Guitar.all.forEach(guitar => {
         main.appendChild(guitar.fullRender)
     })
-    //render all guitars with name, brand, category, year
 }
 
 function renderAllGuitarsBrands() {
-    Brand.all.forEach(guitar => {
-        main.appendChild(guitar.element)
+    Brand.all.forEach(brand => {
+        main.appendChild(brand.fullRender())
     })
 }
 

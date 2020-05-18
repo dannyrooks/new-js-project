@@ -8,11 +8,10 @@ class GuitarsAdapter {
         fetch(this.baseURL)
         .then(res => res.json())
         .then(resObj => {
-            resObj.data.forEach(guitarObj => {
-                let sanitized = {...guitarObj.attributes, id: 
-                guitarObj.id, brand_id: 
-                guitarObj.relationships.brand.data}
-                //guitarObj.relationships.brand.data.id}
+            resObj.data.forEach(Obj => {
+                let sanitized = {...Obj.attributes, id: 
+                Obj.id, brand_id: 
+                Obj.relationships.brand.data.id}
                 // console.log(sanitized);
                 new Guitar(sanitized)
             })

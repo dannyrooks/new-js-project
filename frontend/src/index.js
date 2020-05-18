@@ -30,7 +30,7 @@ const callbacks = {
 
 function renderAllGuitars() {
     Guitar.all.forEach(guitar => {
-        main.appendChild(guitar.element)
+        main.appendChild(guitar.fullRender())
     })
     //render guitars and their attributes with corresponding brands
 }

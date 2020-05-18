@@ -17,14 +17,16 @@ class Guitar {
     }
 
     brand() {
-        Brand.all.find(brand => brand.id === this.brand_id)
+        return Brand.all.find(brand => brand.id === this.brand_id)
     }
 
     fullRender(){
         this.element.innerHTML = `
         <h1>${this.name}</h1>
+        <p>Brand: ${this.brand().name}</p>
+        <p>Year: ${this.year}</p>
         <p>Category: ${this.category}</p>
-        <p>Brand: ${brand().name}</p>
         `
+        return this.element
     }
 }

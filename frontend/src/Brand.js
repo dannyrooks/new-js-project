@@ -1,9 +1,9 @@
 class Brand {
     static all = []
 
-    constructor({id, name}) {
+    constructor(name) {
         this.name = name
-        this.id = id 
+        
         Brand.all.push(this)
     }
 

@@ -49,7 +49,7 @@ function resToJson(res){
 
 function putGuitarOnDom(guitar){
     guitarList.innerHTML += 
-        `<li>${guitar.attributes.name}: ${guitar.attributes.category}</li>`
+        `<li>${guitar.attributes.name}: ${guitar.attributes.category}: ${guitar.attributes.year}</li>`
     
 }
 

@@ -28,7 +28,7 @@ function handleFormSubmit(event) {
         let newGuitarObj = {
             name: inputs[0].value,
             category: inputs[1].value,
-            brand_id: select.value
+            brandId: select.value
         }
         guitarsAdapter.newGuitar(newGuitarObj)
     }

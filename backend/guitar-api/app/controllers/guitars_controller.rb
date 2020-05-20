@@ -10,7 +10,7 @@ class GuitarsController < ApplicationController
   end
 
   def create
-    newGuitar = Guitar.create(brand_id: params['brand_id'], name: params['name'], category: params['category'], year: params['year'])
+    newGuitar = Guitar.create(brand_id: params['brandId'], name: params['name'], category: params['category'], year: params['year'])
     render json: GuitarSerializer.new(newGuitar)
   end
 

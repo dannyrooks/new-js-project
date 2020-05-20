@@ -14,17 +14,17 @@ class Brand {
 
     guitars() {
         return Guitar.all.filter(function(guitar) {
-            return guitar.brand_id === this.id 
+            return guitar.brandId === this.id 
         }, this)
     }
 
     fullRender() {
-        this.innerHTML = `
+        this.element.innerHTML = `
         <h1>${this.name}</h1>
         <h3>This Brand's Guitars:</h3>
         ${this.guitars().map(guitar => guitar.name).join(", ")}
         `
-        this.element
+        return this.element
     }
 
 }

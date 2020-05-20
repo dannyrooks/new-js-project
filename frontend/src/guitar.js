@@ -2,12 +2,12 @@ class Guitar {
 
     static all = []
 
-    constructor({id, name, category, year, brand_id}) {
+    constructor({id, name, category, year, brandId}) {
         this.id = id
         this.name = name
         this.category = category
         this.year = year
-        this.brand_id = brand_id
+        this.brandId = brandId
 
         this.element = document.createElement('div')
         this.element.className = "guitar"
@@ -17,8 +17,17 @@ class Guitar {
     }
 
     brand() {
-        return Brand.all.find(brand => brand.id === this.brand_id)
+        return Brand.all.find(brand => brand.id === this.brandId)
     }
+
+    partialRender(){
+        this.element.innerHTML = `
+          <h3>${this.name}</h3>
+          <p>Description: ${this.category}</p>
+          <p>Description: ${this.year}</p>
+        `
+        return this.element
+      }
 
     fullRender(){
         this.element.innerHTML = `

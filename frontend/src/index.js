@@ -1,5 +1,5 @@
 
-const baseURL = 'http://localhost:3000'
+// const baseURL = 'http://localhost:3000'
 
 
 const guitarsAdapter = new GuitarsAdapter("http://localhost:3000/guitars")
@@ -12,62 +12,112 @@ brandsAdapter.fetchBrands()
 const main = document.getElementById('main')
 const menu = document.getElementById('menu')
 
-menu.addEventListener('click', handleMenuClick)
+const formDiv = document.createElement('div')
 
-function handleMenuClick(event) {
-    if (event.target.id !== menu) {
+menu.addEventListener('click', handleMenuClick)
+// formDiv.addEventListener('click', handleFormSubmit)
+
+function handleMenuClick(event){
+    if (event.target.id !== menu){
         main.innerHTML = ``
         callbacks[`${event.target.id}`]()
     } 
 }
 
-function handleFormSubmit(event) {
-    if(event.target.tagName == "BUTTON") {
+function handleNewBrandSubmit(event) {
+    event.preventDefault()
         let inputs = formDiv.querySelectorAll('input')
         let select = formDiv.querySelectorAll('select')
-        let newGuitarObj = {
-            name: inputs[0].value,
-            category: inputs[1].value,
-            brandId: select.value
+        let newBrandObj = {
+            name: inputs[0].value
+    
         }
-        guitarsAdapter.newGuitar(newGuitarObj)
+       return brandsAdapter.createBrand(newBrandObj).then(brand => {
+           console.log("New Brand Added!", brand)
+            }).catch(err => {
+           console.error(err)
+            })
+}
+
+function handleNewGuitarSubmit(event) {
+    event.preventDefault()
+
+    const guitarObj = {
+        brand_id: event.target.querySelector('input').value,
+        name: event.target.querySelector('input').value,
+        category: event.target.querySelector('input').value
+        // year: event.target.querySelector('input').value
+
     }
+    const guitar = new Guitar(guitarObj)
+    guitar.submit()
 }
 
 const callbacks = {
-    allGuitars: renderAllGuitars,
-    guitarsBrands: renderAllGuitarsBrands,
-    newGuitars: renderNewGuitarForm,
-    // newBrand: renderNewBrandForm
+    allBrands: renderAllBrands,
+    brandsGuitars: renderAllBrandsGuitars,
+    newBrand: renderNewBrandForm,
+    newGuitar: renderNewGuitarForm
 }
 
-function renderAllGuitars() {
-    Guitar.all.forEach(guitar => {
-        main.appendChild(guitar.fullRender)
-    })
-}
-
-function renderAllGuitarsBrands() {
+function renderAllBrands() {
     Brand.all.forEach(brand => {
         main.appendChild(brand.fullRender())
     })
+    main.addEventListener("click", (event) => {
+        if(event.target.className === "brand-link") {
+            event.preventDefault()
+            const brand_id = event.target.dataset.brand_id
+
+            const guitarList = document.querySelector(`#brand-${brand_id}-guitar-list`)
+            const isHidden = guitarList.name.includes("hidden")
+            if(isHidden) {
+                guitarList.name = ""
+                event.target.text = "Hide guitars"
+            }
+            else {
+                guitarList.name = "hidden"
+                event.target.text = "Show guitars"
+            }
+        }
+    })
 }
 
-function renderAllGuitarsBrands() {
+function renderAllBrandsGuitars() {
+    Guitar.all.forEach(guitar => {
+        main.appendChild(guitar.fullRender())
+    })
+}
+
+function renderNewBrandForm() {
     formDiv.innerHTML = `
-    Guitar Name:
+    <form>
+    Brand Name:
     <input type="text" />
     <br>
-    Guitar Category:
-    <input type="text" />
-    <br>
-    <select>
-       <option value="default" selected="selected">Select one option </option>
-     ${Brand.all.map(brand => {
-       return `<option value=${brand.id}>${brand.name}</option>`
-     }).join("")}
-    </select>
-    <button>Add New Guitar</button>
+    <input type="submit" value="Create New Brand" />
+    </form>
   `
+  main.appendChild(formDiv)
+  formDiv.querySelector('form').addEventListener('submit', handleNewBrandSubmit)
+}
+
+function renderNewGuitarForm() {
+    formDiv.innerHTML = `
+    <form>
+      Select a Brand:<select>
+        <option value="default" selected="selected">Select a brand </option>
+        ${Brand.all.map(brand => {
+          return `<option value=${brand.id}>${brand.name} </option>`
+        }).join("")}
+      </select>
+        <br>
+        <input type="text" name="Category" />
+        <input type="submit" value="Add New Guitar"/>
+        <br>
+        
+    </form>
+  `
+  formDiv.querySelector('form').addEventListener('submit', handleNewGuitarSubmit)
   main.appendChild(formDiv)
 }

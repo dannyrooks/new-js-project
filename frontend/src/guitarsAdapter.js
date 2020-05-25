@@ -16,6 +16,28 @@ class GuitarsAdapter {
     
     }
 
+    createGuitar(guitarObj) {
+        const body = JSON.stringify({
+            guitar: guitarObj
+        })
+        return fetch(this.baseURL, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: body,
+            method: 'POST'
+
+        }).then(res => {
+            const json = res.json();
+            guitarsAdapter.fetchGuitars()
+
+            console.log(res.status)
+            console.log(json)
+            return json
+        })
+    }
+
         // sanitizeAndAddGuitar(guitarObj){
         //     console.log(guitarObj);
         //     let sanitized = {...guitarObj.attributes, id: guitarObj.id, brand_id: guitarObj.relationships.brand.data}

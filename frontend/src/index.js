@@ -63,7 +63,10 @@ function handleNewGuitarSubmit(event) {
         category: event.target.children[6].value,
         year: event.target.children[8].value
     }
-    Guitar.submit(guitarObj)
+    return guitarsAdapter.createGuitar(guitarObj).then(guitar => {
+        console.log("new guitar added!", guitar)
+    })
+    // Guitar.submit(guitarObj)
 }
 
 const callbacks = {

@@ -10,7 +10,7 @@ class GuitarsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     newGuitar = Guitar.create(brand_id: params['guitar']['brand_id'], name: params['guitar']['name'], category: params['guitar']['category'], year: params['guitar']['year'])
     newGuitar.brand_name = Brand.find_by(id: params['guitar']['brand_id']).name
     newGuitar.save

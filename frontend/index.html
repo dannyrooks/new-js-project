@@ -1,28 +1,32 @@
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
         <title>Guitar Store</title>
+        <style>
+            .hidden {
+                display: none;
+            }
+        </style>
     </head>
     <body>
-        <h2>Guitar Store</h2>
+        <h1>Guitar Store</h1>
         <div id="menu">
             <span id="allBrands">View All Guitar Brands</span> |
             <span id="brandsGuitars">View All Guitars</span> |
             <span id="newBrand">Add New Brand</span> |
             <span id="newGuitar">Add New Guitar</span> 
-            
         </div>
         <div id="main">
-
+            <script type="text/javascript" src="src/Guitar.js"></script>
+            <script type="text/javascript" src="src/Brand.js"></script>
+            <script type="text/javascript" src="src/BrandsAdapter.js"></script>
+            <script type="text/javascript" src="src/GuitarsAdapter.js"></script>
+            <script type="text/javascript" src="src/index.js"></script>
         </div>
-        <script type="text/javascript" src="src/Guitar.js"></script>
-        <script type="text/javascript" src="src/Brand.js"></script>
-        <script type="text/javascript" src="src/BrandsAdapter.js"></script>
-        <script type="text/javascript" src="src/GuitarsAdapter.js"></script>
-        <script type="text/javascript" src="src/index.js"></script>
-
     </body>
 </html>

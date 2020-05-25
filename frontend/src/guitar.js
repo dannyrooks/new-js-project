@@ -2,12 +2,12 @@ class Guitar {
 
     static all = []
 
-    constructor({id, name, category, year, brand_id}) {
+    constructor(id, name, category, year, brand) {  // brand(Fender)
         this.id = id
         this.name = name
         this.category = category
         this.year = year
-        this.brand_id = brand_id
+        this.brand = brand
 
         this.element = document.createElement('div')
         this.element.className = "guitar"
@@ -22,9 +22,10 @@ class Guitar {
         }, this)
     }
 
-    submit() {
+
+    static submit(guitar) {
         const body = JSON.stringify({
-            guitar: {name: this.name, category: this.category, year: this.year, brand_id: this.brand_id}
+            guitar: {name: guitar.name, category: guitar.category, year: guitar.year, brand_id: guitar.brand_id}
         })
         fetch('http://localhost:3000/guitars', {
             headers: {
@@ -33,15 +34,8 @@ class Guitar {
             },
             body: body,
             method: 'POST'
-        }).then(res => {
-            const json = res.json()
-            console.log(res.status)
-            console.log(json)
-            return json
-        }).then(data => {
-            this.id = data.id
-            callbacks['brandsGuitars']()
-            console.log('New Guitar Added')
+        }).then(res => res.json())
+        .then(data => { console.log(data)
         })
     }
 
@@ -50,7 +44,7 @@ class Guitar {
         <h1>${this.name}</h1>
         <p>Category: ${this.category}</p>
         <p>Year: ${this.year}</p>
-        <p>Brand: ${this.brands().name}</p>
+        <p>Brand: ${this.brand}</p>
         `
         return this.element
     }

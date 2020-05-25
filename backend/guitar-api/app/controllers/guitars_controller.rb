@@ -1,7 +1,7 @@
 class GuitarsController < ApplicationController
   def index
     guitars = Guitar.all
-    render json: GuitarSerializer.new(guitars)
+    render json: guitars
   end
 
   def show
@@ -10,12 +10,16 @@ class GuitarsController < ApplicationController
   end
 
   def create
-    newGuitar = Guitar.create(brand_id: params['brand_id'], name: params['name'], category: params['category'], year: params['year'])
-    render json: GuitarSerializer.new(newGuitar)
+    binding.pry
+    newGuitar = Guitar.create(brand_id: params['guitar']['brand_id'], name: params['guitar']['name'], category: params['guitar']['category'], year: params['guitar']['year'])
+    newGuitar.brand_name = Brand.find_by(id: params['guitar']['brand_id']).name
+    newGuitar.save
+    render json: newGuitar
   end
 
   def destroy
     guitar = Guitar.find_by(id: params[:id])
   end
+
 
 end

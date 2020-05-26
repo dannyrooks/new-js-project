@@ -2,7 +2,7 @@ class Guitar {
 
     static all = []
 
-    constructor(id, name, category, year, brand) {  // brand(Fender)
+    constructor(id, name, category, year, brand) { 
         this.id = id
         this.name = name
         this.category = category
@@ -16,14 +16,14 @@ class Guitar {
         Guitar.all.push(this)
     }
 
-    brands() {
-        return Brand.all.filter(function(brand){
-            return brand.id === this.brand_id
-        }, this)
-    }
+    // brands() {
+    //     return Brand.all.filter(function(brand){
+    //         return brand.id === this.brand_id
+    //     }, this)
+    // }
 
 
-    static submit(guitar) {
+static submit(guitar) {
         const body = JSON.stringify({
             guitar: {name: guitar.name, category: guitar.category, year: guitar.year, brand_id: guitar.brand_id}
         })
@@ -46,6 +46,7 @@ class Guitar {
         <p>Year: ${this.year}</p>
         <p>Brand: ${this.brand}</p>
         `
+        
         return this.element
     }
 }

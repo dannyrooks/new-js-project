@@ -2,10 +2,10 @@
 // const baseURL = 'http://localhost:3000'
 
 
-const guitarsAdapter = new GuitarsAdapter("http://localhost:3000/guitars")
+const guitarsAdapter = new GuitarsAdapter("http://localhost:3000/guitars") 
 const brandsAdapter = new BrandsAdapter("http://localhost:3000/brands")
 
-guitarsAdapter.fetchGuitars();
+guitarsAdapter.fetchGuitars()
 brandsAdapter.fetchBrands()
 
 const main = document.getElementById('main')
@@ -40,17 +40,16 @@ function handleNewBrandSubmit(event) {
 
 // function handleNewGuitarSubmit(event){
 
-
 //     if(event.target.tagName == "BUTTON"){
 //       let inputs = formDiv.querySelectorAll('input')
 //       let select = formDiv.querySelector('select')
-//       let newGuitasrObj = {
+//       let guitarObj = {
 //         name: inputs[0].value,
 //         category: inputs[1].value,
 //         year: inputs[2].value,
 //         brand_id: select.value
 //       }
-//       guitarsAdapter.newGuitar(newGuitarObj)
+//       guitarsAdapter.createGuitar(guitarObj)
 //     }
 //   }
 
@@ -71,7 +70,7 @@ function handleNewGuitarSubmit(event) {
 
 const callbacks = {
     allBrands: renderAllBrands,
-    brandsGuitars: renderAllBrandsGuitars,
+    allGuitars: renderAllGuitars,
     newBrand: renderNewBrandForm,
     newGuitar: renderNewGuitarForm
 }
@@ -99,14 +98,6 @@ function renderAllBrands() {
     })
 }
 
-
-
-function renderAllBrandsGuitars() {
-    Guitar.all.forEach(guitar => {
-        main.appendChild(guitar.fullRender())
-     })
-}
-
 function renderNewBrandForm() {
     formDiv.innerHTML = `
     <form>
@@ -119,6 +110,13 @@ function renderNewBrandForm() {
   `
   main.appendChild(formDiv)
   formDiv.querySelector('form').addEventListener('submit', handleNewBrandSubmit)
+}
+
+function renderAllGuitars() {
+    
+    Guitar.all.forEach(guitar => {
+        main.appendChild(guitar.fullRender())
+     })
 }
 
 function renderNewGuitarForm() {

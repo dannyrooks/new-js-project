@@ -3,7 +3,7 @@ class GuitarsAdapter {
         this.baseURL = baseURL
     }
 
-    //the adapter is going to do all fetch request
+    //the adapter is going to do all fetch requests that correspond to guitars
     
     fetchGuitars() {
         fetch(this.baseURL)

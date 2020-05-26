@@ -2,28 +2,26 @@ class BrandsAdapter {
     constructor(baseURL) {
     this.baseURL = baseURL   
     }
-        createBrand(brandObj) {
-                const body = JSON.stringify({
-                    brand: brandObj
-                })
-                return fetch(this.baseURL, {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: body,
-                    method: 'POST'
-                }).then(res => {
-                    const json = res.json();
-                    brandsAdapter.fetchBrands()
 
-                    console.log(res.status)
-                    console.log(json)
-                    return json
-                })
-            }
-
-
+    createBrand(brandObj) {
+        const body = JSON.stringify({
+            brand: brandObj
+        })
+        return fetch(this.baseURL, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: body,
+            method: 'POST'
+        }).then(res => {
+            const json = res.json();
+            brandsAdapter.fetchBrands()
+            console.log(res.status)
+            console.log(json)
+            return json
+        })
+    }
 
     fetchBrands() {
         fetch(this.baseURL)
@@ -36,11 +34,6 @@ class BrandsAdapter {
         })
         .then(console.log(Brand.all))
         }
-
-    
-
-
-
 
 }
 

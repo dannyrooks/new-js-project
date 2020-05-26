@@ -24,7 +24,7 @@ class Brand {
       <a href="#" class="brand-link" data-brand-id="${this.id}" id="brand-${this.id}-guitars">Show guitars (${this.guitars().length})</a>
       <ul id="brand-${this.id}-guitar-list" class="hidden">
         ${this.guitars().map(guitar => {
-          return `<li>${guitar.category}</li>`
+          return `<li>${guitar.name}</li>`
         }).join("")}
       </ul>
       </p>

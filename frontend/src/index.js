@@ -80,14 +80,26 @@ function renderAllBrands() {
         main.appendChild(brand.fullRender())
     })
     main.addEventListener("click", (event) => {
+        
         if(event.target.className === "brand-link") {
+            
             event.preventDefault()
-            // debugger
-            const brand_id = event.target.dataset.brandId
-            const guitarList = document.querySelector(`#brand-${brand_id}-guitar-list`)
+            
+            const brandId = event.target.dataset.brandId
+            
+            const guitarList = document.querySelector(`#brand-${brandId}-guitar-list`)
+            //debugger
             const isHidden = guitarList.className.includes("hidden")
             if(isHidden) {
                 guitarList.name = ""
+                guitarList.classList.remove('hidden')
+                // brand = Brand.all.find(b => b.id == brandId)
+                // guitars = brand.guitars()
+                // gde = guitars.map(g => g.fullRender())
+                // for(let g of gde){
+                //     guitarList.appendChild(g)
+                // }
+                //debugger
                 event.target.text = "Hide guitars"
             }
             else {

@@ -13,7 +13,7 @@ class Brand {
   }
 
   guitars() {
-      return Guitar.all.filter(guitar => guitar.brand_id == this.id)
+      return Guitar.all.filter(guitar => guitar.brand == this.name)
   }
 
   fullRender() {

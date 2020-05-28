@@ -8,8 +8,9 @@ class Brand {
       this.element = document.createElement('div')
       this.element.className = "brand"
       this.element.id = `brand-${this.id}`
-
-      Brand.all.push(this)
+      
+      
+      Brand.all.push(this) //this is where to fix multiples?
   }
 
   guitars() {

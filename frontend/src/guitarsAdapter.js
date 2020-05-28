@@ -3,7 +3,6 @@ class GuitarsAdapter {
         this.baseURL = baseURL
     }
 
-    //the adapter is going to do all fetch requests that correspond to guitars
     
     fetchGuitars() {
         fetch(this.baseURL)
@@ -38,9 +37,5 @@ class GuitarsAdapter {
         })
     }
 
-        // sanitizeAndAddGuitar(guitarObj){
-        //     console.log(guitarObj);
-        //     let sanitized = {...guitarObj.attributes, id: guitarObj.id, brand_id: guitarObj.relationships.brand.data}
-        //     new Guitar(sanitized)
-        // }
+        
 }

@@ -12,7 +12,6 @@ const main = document.getElementById('main')
 const menu = document.getElementById('menu')
 
 const formDiv = document.createElement('div')
-// formDiv.addEventListener('click', handleFormSubmit)
 menu.addEventListener('click', handleMenuClick)
 
 
@@ -37,21 +36,6 @@ function handleNewBrandSubmit(event) {
            console.error(err)
             })
 }
-
-// function handleNewGuitarSubmit(event){
-
-//     if(event.target.tagName == "BUTTON"){
-//       let inputs = formDiv.querySelectorAll('input')
-//       let select = formDiv.querySelector('select')
-//       let guitarObj = {
-//         name: inputs[0].value,
-//         category: inputs[1].value,
-//         year: inputs[2].value,
-//         brand_id: select.value
-//       }
-//       guitarsAdapter.createGuitar(guitarObj)
-//     }
-//   }
 
 function handleNewGuitarSubmit(event) {
     event.preventDefault()

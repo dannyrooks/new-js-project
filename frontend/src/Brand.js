@@ -10,7 +10,7 @@ class Brand {
       this.element.id = `brand-${this.id}`
       
       
-      Brand.all.push(this) //this is where to fix multiples?
+      Brand.all.push(this)
   }
 
   guitars() {
@@ -32,28 +32,5 @@ class Brand {
       `
       return this.element
   }
-
-    // submit() {
-    //     const body = JSON.stringify({
-    //         brand: {name: this.name, id: this.id}
-    //     })
-    //     fetch('http://localhost:3000/brands', {
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: body,
-    //         method: 'POST'
-    //     }).then(res => {
-    //         const json = res.json()
-    //         console.log(res.status)
-    //         console.log(json)
-    //         return json
-    //     }).then(data => {
-    //         this.id = data.id
-    //         callbacks['guitarsBrands']()
-    //         console.log('added a brand')
-    //     })
-    // }
 
 }

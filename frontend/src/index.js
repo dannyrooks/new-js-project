@@ -1,6 +1,4 @@
 
-// const baseURL = 'http://localhost:3000'
-
 
 const guitarsAdapter = new GuitarsAdapter("http://localhost:3000/guitars") 
 const brandsAdapter = new BrandsAdapter("http://localhost:3000/brands")
@@ -12,7 +10,7 @@ const main = document.getElementById('main')
 const menu = document.getElementById('menu')
 
 const formDiv = document.createElement('div')
-menu.addEventListener('click', handleMenuClick)
+menu.addEventListener('click', handleMenuClick) 
 
 
 function handleMenuClick(event){
@@ -49,7 +47,6 @@ function handleNewGuitarSubmit(event) {
     return guitarsAdapter.createGuitar(guitarObj).then(guitar => {
         console.log("new guitar added!", guitar)
     })
-    // Guitar.submit(guitarObj)
 }
 
 const callbacks = {
@@ -72,7 +69,6 @@ function renderAllBrands() {
             const brandId = event.target.dataset.brandId
             
             const guitarList = document.querySelector(`#brand-${brandId}-guitar-list`)
-            //debugger
             const isHidden = guitarList.className.includes("hidden")
             if(isHidden) {
                 guitarList.name = ""

@@ -20,21 +20,21 @@ class Guitar {
     
 
 
-// static submit(guitar) {
-//         const body = JSON.stringify({
-//             guitar: {name: guitar.name, category: guitar.category, year: guitar.year, brand_id: guitar.brand_id}
-//         })
-//         fetch('http://localhost:3000/guitars', {
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//             },
-//             body: body,
-//             method: 'POST'
-//         }).then(res => res.json())
-//         .then(data => { console.log(data)
-//         })
-//     }
+static submit(guitar) {
+        const body = JSON.stringify({
+            guitar: {name: guitar.name, category: guitar.category, year: guitar.year, brand_id: guitar.brand_id}
+        })
+        fetch('http://localhost:3000/guitars', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: body,
+            method: 'POST'
+        }).then(res => res.json())
+        .then(data => { console.log(data)
+        })
+    }
 
     fullRender(){
         this.element.innerHTML = `

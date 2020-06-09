@@ -14,7 +14,6 @@ class Guitar {
         this.element.id = `guitar-${this.id}`
 
         Guitar.all.push(this)
-         // fix multiples here?
     }
 
     
@@ -43,7 +42,6 @@ static submit(guitar) {
         <p>Year: ${this.year}</p>
         <p>Brand: ${this.brand}</p>
         `
-        
         return this.element
     }
 }

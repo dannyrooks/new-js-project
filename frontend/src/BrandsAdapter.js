@@ -33,9 +33,8 @@ class BrandsAdapter {
             });
         })
         .then(console.log(Brand.all))
-        }
+    }
 
 }
-
 
 

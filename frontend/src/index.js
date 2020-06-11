@@ -8,7 +8,7 @@ const main = document.getElementById('main')
 const menu = document.getElementById('menu')
 const formDiv = document.createElement('div')
 
-menu.addEventListener('click', handleMenuClick) 
+menu.addEventListener('click', handleMenuClick)
 
 function handleMenuClick(event){
     if (event.target.id !== menu){
@@ -19,7 +19,6 @@ function handleMenuClick(event){
 }
 
 function handleNewBrandSubmit(event) {
-    // event.preventDefault()
         let inputs = formDiv.querySelectorAll('input')
         // let select = formDiv.querySelectorAll('select')
         let newBrandObj = {
@@ -33,8 +32,6 @@ function handleNewBrandSubmit(event) {
 }
 
 function handleNewGuitarSubmit(event) {
-    // event.preventDefault()
-
     const guitarObj = {
         brand_id: event.target.children[2].value,
         name: event.target.children[4].value,
@@ -51,32 +48,18 @@ const callbacks = {
     allGuitars: renderAllGuitars,
     newBrand: renderNewBrandForm,
     newGuitar: renderNewGuitarForm,
-    sortBrands: sortBrands
 }
-
-function sortBrands() {
-    Brand.all.sort((a, b) => {
-        return a.name > b.name ? 1 : -1
-    })
-}
-
 
 function renderAllBrands() {
-   main.innerHTML = `
-   <button onclick="sortBrands()">Sort</button>
-   `
-    
     Brand.all.forEach(brand => {
         main.appendChild(brand.fullRender())
     })
    
     main.addEventListener("click", (event) => {
         if(event.target.className === "brand-link") {
-            
-            const brandId = event.target.dataset.brandId
-            
-            const guitarList = document.querySelector(`#brand-${brandId}-guitar-list`)
-            const isHidden = guitarList.className.includes("hidden")
+        const brandId = event.target.dataset.brandId
+        const guitarList = document.querySelector(`#brand-${brandId}-guitar-list`)
+        const isHidden = guitarList.className.includes("hidden")
             if(isHidden) {
                 guitarList.name = ""
                 guitarList.classList.remove('hidden')
@@ -112,9 +95,8 @@ function renderNewBrandForm() {
 }
 
 function renderAllGuitars() {
-    
     Guitar.all.forEach(guitar => {
-        main.appendChild(guitar.fullRender())
+    main.appendChild(guitar.fullRender())
      })
 }
 

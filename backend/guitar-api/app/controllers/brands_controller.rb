@@ -2,8 +2,11 @@ class BrandsController < ApplicationController
 
   # GET /brands
   def index
-      brands = Brand.all 
+      brands = Brand.all
       render json: brands
+    #   options = {}
+    #   options[:include] = [:guitars] 
+    #   render json: BrandSerializer.new(brands, options) 
   end
   
   def show
@@ -32,7 +35,7 @@ class BrandsController < ApplicationController
   private
 
   def brand_params
-      params.require(:brand).permit(:name)
+      params.require(:brand).permit(:name, :id)
   end
 end
 

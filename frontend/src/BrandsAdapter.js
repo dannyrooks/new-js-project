@@ -3,6 +3,18 @@ class BrandsAdapter {
     this.baseURL = baseURL   
     }
 
+    fetchBrands() {
+            fetch(this.baseURL)
+            .then(res => res.json())
+            .then(resObj => {
+                resObj.forEach(brandObj => {
+                    const {id, name} = brandObj
+                    new Brand(id, name)
+                });
+            })
+            .then(console.log(Brand.all))
+    }
+
     createBrand(brandObj) {
         const body = JSON.stringify({
             brand: brandObj
@@ -22,19 +34,6 @@ class BrandsAdapter {
             return json
         })
     }
-
-    fetchBrands() {
-        fetch(this.baseURL)
-        .then(res => res.json())
-        .then(resObj => {
-            resObj.forEach(brandObj => {
-                const {id, name} = brandObj
-                new Brand(id, name)
-            });
-        })
-        .then(console.log(Brand.all))
-    }
-
 }
 
 

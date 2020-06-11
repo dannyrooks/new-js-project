@@ -6,10 +6,9 @@ brandsAdapter.fetchBrands()
 
 const main = document.getElementById('main')
 const menu = document.getElementById('menu')
-
 const formDiv = document.createElement('div')
-menu.addEventListener('click', handleMenuClick) 
 
+menu.addEventListener('click', handleMenuClick) 
 
 function handleMenuClick(event){
     if (event.target.id !== menu){
@@ -22,7 +21,7 @@ function handleMenuClick(event){
 function handleNewBrandSubmit(event) {
     // event.preventDefault()
         let inputs = formDiv.querySelectorAll('input')
-        let select = formDiv.querySelectorAll('select')
+        // let select = formDiv.querySelectorAll('select')
         let newBrandObj = {
             name: inputs[0].value
         }
@@ -51,18 +50,28 @@ const callbacks = {
     allBrands: renderAllBrands,
     allGuitars: renderAllGuitars,
     newBrand: renderNewBrandForm,
-    newGuitar: renderNewGuitarForm
+    newGuitar: renderNewGuitarForm,
+    sortBrands: sortBrands
 }
 
+function sortBrands() {
+    Brand.all.sort((a, b) => {
+        return a.name > b.name ? 1 : -1
+    })
+}
+
+
 function renderAllBrands() {
+   main.innerHTML = `
+   <button onclick="sortBrands()">Sort</button>
+   `
+    
     Brand.all.forEach(brand => {
         main.appendChild(brand.fullRender())
     })
+   
     main.addEventListener("click", (event) => {
-        
         if(event.target.className === "brand-link") {
-            
-            // event.preventDefault()
             
             const brandId = event.target.dataset.brandId
             

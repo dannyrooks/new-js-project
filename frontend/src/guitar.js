@@ -16,9 +16,6 @@ class Guitar {
         Guitar.all.push(this)
     }
 
-    
-
-
 static submit(guitar) {
         const body = JSON.stringify({
             guitar: {name: guitar.name, category: guitar.category, year: guitar.year, brand_id: guitar.brand_id}
@@ -37,7 +34,7 @@ static submit(guitar) {
 
     fullRender(){
         this.element.innerHTML = `
-        <h1>${this.name}</h1>
+        <h2>${this.name}</h2>
         <p>Category: ${this.category}</p>
         <p>Year: ${this.year}</p>
         <p>Brand: ${this.brand}</p>

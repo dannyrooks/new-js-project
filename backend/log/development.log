@@ -53447,3 +53447,194 @@ Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.1ms | Allocations: 2057)
 Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.2ms | Allocations: 2689)
 
 
+Started GET "/guitars" for ::1 at 2020-06-11 08:22:48 -0400
+Started GET "/brands" for ::1 at 2020-06-11 08:22:48 -0400
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BrandsController#index as */*
+Processing by GuitarsController#index as */*
+  [1m[36mBrand Load (0.1ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  [1m[36mGuitar Load (0.1ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 7.0ms | ActiveRecord: 0.5ms | Allocations: 6857)
+
+
+Completed 200 OK in 18ms (Views: 12.2ms | ActiveRecord: 0.5ms | Allocations: 13045)
+
+
+Started POST "/brands" for ::1 at 2020-06-11 08:23:01 -0400
+Processing by BrandsController#create as JSON
+  Parameters: {"brand"=>{"name"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/brands_controller.rb:23:in `create'
+  [1m[36mBrand Create (0.5ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", ""], ["created_at", "2020-06-11 12:23:01.314654"], ["updated_at", "2020-06-11 12:23:01.314654"]]
+  ↳ app/controllers/brands_controller.rb:23:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/brands_controller.rb:23:in `create'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 2687)
+
+
+Started GET "/brands" for ::1 at 2020-06-11 08:23:01 -0400
+Processing by BrandsController#index as */*
+  [1m[36mBrand Load (0.3ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 1411)
+
+
+Started GET "/guitars" for ::1 at 2020-06-11 08:23:01 -0400
+Started GET "/brands" for ::1 at 2020-06-11 08:23:01 -0400
+Processing by GuitarsController#index as */*
+Processing by BrandsController#index as */*
+  [1m[36mGuitar Load (0.1ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+  [1m[36mBrand Load (0.1ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms | Allocations: 2271)
+
+
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 2781)
+
+
+Started POST "/guitars" for ::1 at 2020-06-11 08:23:17 -0400
+Processing by GuitarsController#create as JSON
+  Parameters: {"guitar"=>{"brand_id"=>"6", "name"=>"d", "category"=>"d", "year"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/guitars_controller.rb:14:in `create'
+  [1m[36mGuitar Create (0.5ms)[0m  [1m[32mINSERT INTO "guitars" ("name", "category", "year", "created_at", "updated_at", "brand_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "d"], ["category", "d"], ["year", 1], ["created_at", "2020-06-11 12:23:17.577907"], ["updated_at", "2020-06-11 12:23:17.577907"], ["brand_id", "6"]]
+  ↳ app/controllers/guitars_controller.rb:14:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/guitars_controller.rb:14:in `create'
+  [1m[36mBrand Load (0.2ms)[0m  [1m[34mSELECT "brands".* FROM "brands" WHERE "brands"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/guitars_controller.rb:15:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/guitars_controller.rb:16:in `create'
+  [1m[36mGuitar Update (0.5ms)[0m  [1m[33mUPDATE "guitars" SET "updated_at" = ?, "brand_name" = ? WHERE "guitars"."id" = ?[0m  [["updated_at", "2020-06-11 12:23:17.594017"], ["brand_name", ""], ["id", 5]]
+  ↳ app/controllers/guitars_controller.rb:16:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/guitars_controller.rb:16:in `create'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 3.1ms | Allocations: 7063)
+
+
+Started GET "/guitars" for ::1 at 2020-06-11 08:23:17 -0400
+Processing by GuitarsController#index as */*
+Started GET "/brands" for ::1 at 2020-06-11 08:23:17 -0400
+  [1m[36mGuitar Load (0.2ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+Processing by BrandsController#index as */*
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+  [1m[36mBrand Load (0.1ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 2346)
+
+
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 2479)
+
+
+Started GET "/guitars" for ::1 at 2020-06-11 08:23:33 -0400
+Started GET "/brands" for ::1 at 2020-06-11 08:23:33 -0400
+Processing by GuitarsController#index as */*
+  [1m[36mGuitar Load (0.2ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 1776)
+
+
+Processing by BrandsController#index as */*
+  [1m[36mBrand Load (0.1ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.1ms | Allocations: 1448)
+
+
+Started GET "/brands" for ::1 at 2020-06-11 08:25:44 -0400
+Started GET "/guitars" for ::1 at 2020-06-11 08:25:44 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BrandsController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mBrand Load (0.1ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+Processing by GuitarsController#index as */*
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+  [1m[36mGuitar Load (0.1ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 0.5ms | Allocations: 7206)
+
+
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.6ms | Allocations: 10662)
+
+
+Started POST "/brands" for ::1 at 2020-06-11 08:26:06 -0400
+Processing by BrandsController#create as JSON
+  Parameters: {"brand"=>{"name"=>"Silvertone"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/brands_controller.rb:23:in `create'
+  [1m[36mBrand Create (2.1ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Silvertone"], ["created_at", "2020-06-11 12:26:06.194978"], ["updated_at", "2020-06-11 12:26:06.194978"]]
+  ↳ app/controllers/brands_controller.rb:23:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/brands_controller.rb:23:in `create'
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.9ms | Allocations: 2687)
+
+
+Started GET "/brands" for ::1 at 2020-06-11 08:26:06 -0400
+Started GET "/guitars" for ::1 at 2020-06-11 08:26:06 -0400
+Processing by GuitarsController#index as */*
+Processing by BrandsController#index as */*
+  [1m[36mGuitar Load (0.2ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1316)
+
+
+  [1m[36mBrand Load (0.2ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 2417)
+
+
+Started POST "/guitars" for ::1 at 2020-06-11 08:26:18 -0400
+Processing by GuitarsController#create as JSON
+  Parameters: {"guitar"=>{"brand_id"=>"3", "name"=>"Bobkat", "category"=>"Electric", "year"=>"1964"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/guitars_controller.rb:14:in `create'
+  [1m[36mGuitar Create (0.6ms)[0m  [1m[32mINSERT INTO "guitars" ("name", "category", "year", "created_at", "updated_at", "brand_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bobkat"], ["category", "Electric"], ["year", 1964], ["created_at", "2020-06-11 12:26:18.970631"], ["updated_at", "2020-06-11 12:26:18.970631"], ["brand_id", "3"]]
+  ↳ app/controllers/guitars_controller.rb:14:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/guitars_controller.rb:14:in `create'
+  [1m[36mBrand Load (0.2ms)[0m  [1m[34mSELECT "brands".* FROM "brands" WHERE "brands"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/guitars_controller.rb:15:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/guitars_controller.rb:16:in `create'
+  [1m[36mGuitar Update (0.3ms)[0m  [1m[33mUPDATE "guitars" SET "updated_at" = ?, "brand_name" = ? WHERE "guitars"."id" = ?[0m  [["updated_at", "2020-06-11 12:26:18.987097"], ["brand_name", "Silvertone"], ["id", 3]]
+  ↳ app/controllers/guitars_controller.rb:16:in `create'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/guitars_controller.rb:16:in `create'
+Completed 200 OK in 21ms (Views: 0.4ms | ActiveRecord: 2.7ms | Allocations: 7044)
+
+
+Started GET "/guitars" for ::1 at 2020-06-11 08:26:19 -0400
+Started GET "/brands" for ::1 at 2020-06-11 08:26:19 -0400
+Processing by GuitarsController#index as */*
+Processing by BrandsController#index as */*
+  [1m[36mGuitar Load (0.3ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+  [1m[36mBrand Load (0.1ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 1787)
+
+
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 2549)
+
+
+Started GET "/guitars" for ::1 at 2020-06-11 08:26:57 -0400
+Started GET "/brands" for ::1 at 2020-06-11 08:26:57 -0400
+Processing by GuitarsController#index as */*
+  [1m[36mGuitar Load (0.2ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+Processing by BrandsController#index as */*
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+  [1m[36mBrand Load (0.1ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 1738)
+
+
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 1650)
+
+

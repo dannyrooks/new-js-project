@@ -53638,3 +53638,21 @@ Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 1738)
 Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 1650)
 
 
+Started GET "/guitars" for ::1 at 2020-06-11 08:47:16 -0400
+Started GET "/brands" for ::1 at 2020-06-11 08:47:16 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BrandsController#index as */*
+Processing by GuitarsController#index as */*
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  ↳ app/controllers/brands_controller.rb:6:in `index'
+  [1m[36mGuitar Load (0.4ms)[0m  [1m[34mSELECT "guitars".* FROM "guitars"[0m
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 0.8ms | Allocations: 6125)
+
+
+  ↳ app/controllers/guitars_controller.rb:4:in `index'
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.9ms | Allocations: 11566)
+
+

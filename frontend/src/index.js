@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', 
+() => {
+    console.log('index.js loaded!')
+});
+
+
 const guitarsAdapter = new GuitarsAdapter("http://localhost:3000/guitars") 
 const brandsAdapter = new BrandsAdapter("http://localhost:3000/brands")
 
@@ -18,7 +24,9 @@ function handleMenuClick(event){
     } 
 }
 
-function handleNewBrandSubmit(event) {
+function handleNewBrandSubmit() {
+        // event.preventDefault()
+
         let inputs = formDiv.querySelectorAll('input')
         // let select = formDiv.querySelectorAll('select')
         let newBrandObj = {
@@ -32,7 +40,7 @@ function handleNewBrandSubmit(event) {
 }
 
 function handleNewGuitarSubmit(event) {
-    const guitarObj = {
+    let guitarObj = {
         brand_id: event.target.children[2].value,
         name: event.target.children[4].value,
         category: event.target.children[6].value,
@@ -40,21 +48,20 @@ function handleNewGuitarSubmit(event) {
     }
     return guitarsAdapter.createGuitar(guitarObj).then(guitar => {
         console.log("new guitar added!", guitar)
-    })
+        })
 }
 
 const callbacks = {
     allBrands: renderAllBrands,
     allGuitars: renderAllGuitars,
     newBrand: renderNewBrandForm,
-    newGuitar: renderNewGuitarForm,
+    newGuitar: renderNewGuitarForm
 }
 
 function renderAllBrands() {
     Brand.all.forEach(brand => {
         main.appendChild(brand.fullRender())
     })
-   
     main.addEventListener("click", (event) => {
         if(event.target.className === "brand-link") {
         const brandId = event.target.dataset.brandId

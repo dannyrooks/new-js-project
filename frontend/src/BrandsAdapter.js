@@ -1,19 +1,38 @@
+document.addEventListener('DOMContentLoaded', 
+() => {
+    console.log('BrandsAdapter.js loaded!')
+});
+
+
+
 class BrandsAdapter {
     constructor(baseURL) {
     this.baseURL = baseURL   
     }
 
+    // fetchBrands() {
+    //         fetch(this.baseURL)
+    //         .then(res => res.json())
+    //         .then(resObj => {
+    //             resObj.forEach(brandObj => {
+    //                 const {id, name} = brandObj
+    //                 new Brand(id, name)
+    //             });
+    //         })
+    //         // .then(console.log(Brand.all))
+    // }
+
     fetchBrands() {
-            fetch(this.baseURL)
-            .then(res => res.json())
-            .then(resObj => {
-                resObj.forEach(brandObj => {
-                    const {id, name} = brandObj
-                    new Brand(id, name)
-                });
-            })
-            .then(console.log(Brand.all))
-    }
+        fetch(this.baseURL)
+        .then(res => res.json())
+        .then(resObj => {
+            resObj.forEach(brandObj => {
+                const {id, name} = brandObj
+                new Brand(id, name)
+            });
+        })
+        .then(console.log(Brand.all))
+}
 
     createBrand(brandObj) {
         const body = JSON.stringify({

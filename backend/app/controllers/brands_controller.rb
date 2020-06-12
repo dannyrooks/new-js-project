@@ -3,10 +3,10 @@ class BrandsController < ApplicationController
   # GET /brands
   def index
       brands = Brand.all
-      render json: brands
     #   options = {}
-    #   options[:include] = [:guitars] 
-    #   render json: BrandSerializer.new(brands, options) 
+    #   options[:include] = [:guitars]
+      
+      render json: brands
   end
   
   def show
@@ -40,12 +40,7 @@ class BrandsController < ApplicationController
 end
 
 
-# class BrandsController < ApplicationController
-#   def index
-#     brands = Brand.all
-#     render json: BrandSerializer.new(brands)
-#   end
-# end
+
 
 
 

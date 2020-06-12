@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function() {
+    console.log('Guitar.js loaded!');
+});
+
+
+
 class Guitar {
 
     static all = []

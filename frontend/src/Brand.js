@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", function() {
+  console.log('Brand.js loaded!');
+});
+
+
+
+
 class Brand {
   static all = []
 
@@ -16,6 +23,26 @@ class Brand {
   guitars() {
       return Guitar.all.filter(guitar => guitar.brand == this.name)
   }
+
+//   createBrand(brandObj) {
+//     const body = JSON.stringify({
+//         brand: brandObj
+//     })
+//     return fetch(this.baseURL, {
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         },
+//         body: body,
+//         method: 'POST'
+//     }).then(res => {
+//         const json = res.json();
+//         brandsAdapter.fetchBrands()
+//         console.log(res.status)
+//         console.log(json)
+//         return json
+//     })
+// }
 
   fullRender() {
       this.element.innerHTML = `

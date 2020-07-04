@@ -1,11 +1,23 @@
-
 body {
-    background-color: aqua;
+    background-image: url("https://www.itl.cat/pngfile/big/11-110695_dual-monitor-wallpaper-electric-and-acoustic-guitars-dual.jpg");
+  }
+
+h1, h2, p {
+    color: wheat;
 }
 
+h3 {
+    color: wheat;
+}
 
+a {
+    color: lightcyan;
+}
 
-h1 {
-    color: black;
+li {
+    color: wheat;
+}
 
+form {
+    color: wheat;
 }

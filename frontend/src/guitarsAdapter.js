@@ -1,9 +1,7 @@
-document.addEventListener('DOMContentLoaded', 
-() => {
-    console.log('GuitarsAdapter.js loaded!')
-});
-
-
+// document.addEventListener('DOMContentLoaded', 
+// () => {
+//     console.log('GuitarsAdapter.js loaded!')
+// });
 
 class GuitarsAdapter {
     constructor(baseURL) {
@@ -14,10 +12,10 @@ class GuitarsAdapter {
         fetch(this.baseURL)
         .then(res => res.json())
         .then(resObj => {
-             resObj.forEach(obj => {
-                 const {id, name, category, year, brand_name} = obj
-                 new Guitar(id, name, category, year, brand_name)
-                // new Guitar(obj.id, obj.name, obj.category, obj.year, obj.brand_name)
+            resObj.forEach(obj => {
+                const {id, name, category, year, brand_name} = obj
+                // new Guitar(id, name, category, year, brand_name)
+                new Guitar(obj.id, obj.name, obj.category, obj.year, obj.brand_name)
             });
         })
         .then(console.log(Guitar.all))

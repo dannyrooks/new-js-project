@@ -1,8 +1,3 @@
-// document.addEventListener('DOMContentLoaded', 
-// () => {
-//     console.log('GuitarsAdapter.js loaded!')
-// });
-
 class GuitarsAdapter {
     constructor(baseURL) {
         this.baseURL = baseURL
@@ -39,7 +34,5 @@ class GuitarsAdapter {
             console.log(json)
             return json
         })
-    }
-
-        
+    }     
 }

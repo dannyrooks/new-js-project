@@ -1,7 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//   console.log('Brand.js loaded!');
-// });
-
 class Brand {
   static all = []
 

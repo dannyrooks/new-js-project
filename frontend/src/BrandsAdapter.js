@@ -1,8 +1,3 @@
-// document.addEventListener('DOMContentLoaded', 
-// () => {
-//     console.log('BrandsAdapter.js loaded!')
-// });
-
 class BrandsAdapter {
     constructor(baseURL) {
     this.baseURL = baseURL   

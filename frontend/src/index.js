@@ -19,9 +19,10 @@ menu.addEventListener('click', handleMenuClick)
 function handleMenuClick(event){
     if (event.target.id !== menu){
         main.innerHTML = ``
-        
-        callbacks[`${event.target.id}`]()
     } 
+    callbacks[`${event.target.id}`]()
+
+    // add toggle
 }
 
 function handleNewBrandSubmit() {

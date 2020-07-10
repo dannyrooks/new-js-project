@@ -21,3 +21,7 @@ li {
 form {
     color: wheat;
 }
+
+.hidden {
+    display: none;
+}

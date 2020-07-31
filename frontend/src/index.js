@@ -13,8 +13,18 @@ brandsAdapter.fetchBrands()
 const main = document.getElementById('main')
 const menu = document.getElementById('menu')
 const formDiv = document.createElement('div')
+const button = document.getElementById('filterGuitars')
 
 menu.addEventListener('click', handleMenuClick)
+button.addEventListener('click', (event) => filterGuitars())
+
+function filterGuitars() {
+    fetch("http://localhost:3000/guitars")
+    .then(res => res.json())
+    .then(resObj => {
+        console.log(resObj)
+    })
+}
 
 function handleMenuClick(event){
     if (event.target.id !== menu){
@@ -26,7 +36,7 @@ function handleMenuClick(event){
 }
 
 function handleNewBrandSubmit() {
-        // event.preventDefault()
+        event.preventDefault()
 
         let inputs = formDiv.querySelectorAll('input')
         // let select = formDiv.querySelectorAll('select')
@@ -41,6 +51,8 @@ function handleNewBrandSubmit() {
 }
 
 function handleNewGuitarSubmit(event) {
+    event.preventDefault()
+
     let guitarObj = {
         brand_id: event.target.children[2].value,
         name: event.target.children[4].value,
@@ -99,7 +111,9 @@ function renderNewBrandForm() {
     </form>
   `
   main.appendChild(formDiv)
-  formDiv.querySelector('form').addEventListener('submit', handleNewBrandSubmit)
+//   formDiv.querySelector('form').addEventListener('submit', handleNewBrandSubmit)
+
+  formDiv.querySelector('form').addEventListener('submit', (event) => handleNewBrandSubmit(event))
 }
 
 function renderAllGuitars() {
@@ -130,6 +144,6 @@ function renderNewGuitarForm() {
         <br>
     </form>
   `
-  formDiv.querySelector('form').addEventListener('submit', handleNewGuitarSubmit)
+  formDiv.querySelector('form').addEventListener('submit', (event) => handleNewGuitarSubmit(event))
   main.appendChild(formDiv)
 }

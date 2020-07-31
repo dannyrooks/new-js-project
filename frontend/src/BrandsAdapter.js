@@ -4,9 +4,9 @@ class BrandsAdapter {
     }
 
     fetchBrands() {
-        fetch(this.baseURL)
-        .then(res => res.json())
-        .then(resObj => {
+        fetch(this.baseURL)                  // brandsAdapter.baseURL represents the data source sent back, does not return the actual content.
+        .then(res => res.json())             //.then() takes as its argument a function that receives the response as its argument.
+        .then(resObj => {                    // Inside of the function, we do whatever processing we need, but at the end we *have to return* the content that we've gotten out of the response.
             resObj.forEach(brandObj => {
                 const {id, name} = brandObj
                 new Brand(id, name)
@@ -15,7 +15,7 @@ class BrandsAdapter {
         .then(console.log(Brand.all))
 }
 
-    createBrand(brandObj) {
+   createBrand(brandObj) {
         const body = JSON.stringify({
             brand: brandObj
         })

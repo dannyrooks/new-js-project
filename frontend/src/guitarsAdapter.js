@@ -1,3 +1,4 @@
+
 class GuitarsAdapter {
     constructor(baseURL) {
         this.baseURL = baseURL
@@ -8,9 +9,9 @@ class GuitarsAdapter {
         .then(res => res.json())
         .then(resObj => {
             resObj.forEach(obj => {
-                // const {id, name, category, year, brand_name} = obj
-                // new Guitar(id, name, category, year, brand_name)
-                new Guitar(obj.id, obj.name, obj.category, obj.year, obj.brand_name)
+                const {id, name, category, year, brand_name} = obj
+                new Guitar(id, name, category, year, brand_name)
+                // new Guitar(obj.id, obj.name, obj.category, obj.year, obj.brand_name)
             });
         })
         .then(console.log(Guitar.all))

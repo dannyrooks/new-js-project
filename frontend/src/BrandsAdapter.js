@@ -9,8 +9,9 @@ class BrandsAdapter {
         .then(resObj => {                    // Inside of the function, we do whatever processing we need, but at the end we *have to return* the content that we've gotten out of the response.
             resObj.forEach(brandObj => {
                 const {id, name} = brandObj
-                new Brand(id, name)
+               return new Brand(id, name)
             });
+    
         })
         .then(console.log(Brand.all))
 }

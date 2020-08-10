@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', 
-() => {
-    console.log('index.js loaded!')
-});
+// document.addEventListener('DOMContentLoaded', 
+// () => {
+//     console.log('index.js loaded!')
+// });
 
 
 const guitarsAdapter = new GuitarsAdapter("http://localhost:3000/guitars") 
@@ -16,7 +16,7 @@ const formDiv = document.createElement('div')
 const button = document.getElementById('filterGuitars')
 
 menu.addEventListener('click', handleMenuClick)
-button.addEventListener('click', (event) => filterGuitars())
+button.addEventListener('click', (event) => filterGuitars(event))
 
 function filterGuitars() {
     fetch("http://localhost:3000/guitars")
@@ -24,6 +24,14 @@ function filterGuitars() {
     .then(resObj => {
         console.log(resObj)
     })
+}
+
+function clearBrands() {
+    Brand.all = []
+}
+
+function clearGuitars() {
+    Guitar.all = []
 }
 
 function handleMenuClick(event){
@@ -37,6 +45,7 @@ function handleMenuClick(event){
 
 function handleNewBrandSubmit() {
         event.preventDefault()
+        clearBrands()
 
         let inputs = formDiv.querySelectorAll('input')
         // let select = formDiv.querySelectorAll('select')
@@ -52,6 +61,7 @@ function handleNewBrandSubmit() {
 
 function handleNewGuitarSubmit(event) {
     event.preventDefault()
+    clearGuitars()
 
     let guitarObj = {
         brand_id: event.target.children[2].value,
@@ -73,6 +83,7 @@ const callbacks = {
 
 function renderAllBrands() {
     Brand.all.forEach(brand => {
+        
         main.appendChild(brand.fullRender())
     })
     main.addEventListener("click", (event) => {
@@ -110,6 +121,7 @@ function renderNewBrandForm() {
     <input type="submit" value="Create New Brand" />
     </form>
   `
+  
   main.appendChild(formDiv)
 //   formDiv.querySelector('form').addEventListener('submit', handleNewBrandSubmit)
 
@@ -147,3 +159,5 @@ function renderNewGuitarForm() {
   formDiv.querySelector('form').addEventListener('submit', (event) => handleNewGuitarSubmit(event))
   main.appendChild(formDiv)
 }
+
+

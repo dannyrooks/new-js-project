@@ -13,18 +13,28 @@ brandsAdapter.fetchBrands()
 const main = document.getElementById('main')
 const menu = document.getElementById('menu')
 const formDiv = document.createElement('div')
-const button = document.getElementById('filterGuitars')
+// const button = document.getElementById('filterGuitars')
 
 menu.addEventListener('click', handleMenuClick)
-button.addEventListener('click', (event) => filterGuitars(event))
+// button.addEventListener('click', (event) => filterGuitars(event))
 
-function filterGuitars() {
-    fetch("http://localhost:3000/guitars")
-    .then(res => res.json())
-    .then(resObj => {
-        console.log(resObj)
-    })
-}
+// function filterGuitars() {
+//     console.log("filter button clicked!")
+//     fetch("http://localhost:3000/guitars")
+//     .then(res => res.json())
+//     .then(guitars => {
+//         console.log(guitars)
+//         const tele = guitars.filter(t => t.name == "Telecaster")
+//         console.log(tele)
+//         tele.forEach(obj => {
+//             // console.log(obj.name)
+//             const p = document.createElement('p')
+//             p.innerText = obj.name
+//             main.appendChild(p)
+//         })
+//     })
+   document.createElement('p')
+// }
 
 function clearBrands() {
     Brand.all = []
@@ -39,14 +49,11 @@ function handleMenuClick(event){
         main.innerHTML = ``
     } 
     callbacks[`${event.target.id}`]()
-
-    // add toggle
 }
 
 function handleNewBrandSubmit() {
         event.preventDefault()
         clearBrands()
-
         let inputs = formDiv.querySelectorAll('input')
         // let select = formDiv.querySelectorAll('select')
         let newBrandObj = {
@@ -78,13 +85,13 @@ const callbacks = {
     allBrands: renderAllBrands,
     allGuitars: renderAllGuitars,
     newBrand: renderNewBrandForm,
-    newGuitar: renderNewGuitarForm
+    newGuitar: renderNewGuitarForm,
+    filterGuitars: filterGuitars
 }
 
 function renderAllBrands() {
     Brand.all.forEach(brand => {
-        
-        main.appendChild(brand.fullRender())
+    main.appendChild(brand.fullRender())
     })
     main.addEventListener("click", (event) => {
         if(event.target.className === "brand-link") {

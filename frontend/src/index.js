@@ -33,7 +33,7 @@ menu.addEventListener('click', handleMenuClick)
 //             main.appendChild(p)
 //         })
 //     })
-   document.createElement('p')
+//    document.createElement('p')
 // }
 
 function clearBrands() {
@@ -86,7 +86,7 @@ const callbacks = {
     allGuitars: renderAllGuitars,
     newBrand: renderNewBrandForm,
     newGuitar: renderNewGuitarForm,
-    filterGuitars: filterGuitars
+    // filterGuitars: filterGuitars
 }
 
 function renderAllBrands() {
